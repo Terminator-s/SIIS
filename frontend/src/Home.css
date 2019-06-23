@@ -1,0 +1,122 @@
+* {
+    box-sizing: border-box;
+}
+div {
+    font-family: 'Poppins';
+    margin: 0;
+}
+h1{
+    color:#08387f;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 60px;
+    margin-top: 40px;
+    text-align: center;
+}
+.header-bar{
+    background-color:#08387f;
+    padding:30px;
+    font-size:15px;
+    color: white;
+    text-align: left;
+
+
+}
+.header-bar-right{
+    float:right;
+}
+i{
+    margin-left: 15px;
+}
+
+.header img{
+    width:500px;
+    height:400px;
+    margin-left: 150px;
+    margin-bottom: -95px;
+    margin-top: -95px;
+}
+
+.nav-link{
+    color: #08387f;
+}
+.nav-link:hover{
+    background-color:#08387f;
+    color: white;
+}
+
+.nav{
+    float:right;
+    margin-right: 200px;
+
+}
+.nav-item{
+    margin-right: 40px;
+}
+.column {
+    float: left;
+    width: 25%;
+    padding: 30px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.flip-card {
+    background-color: transparent;
+    width: 400px;
+    height: 400px;
+    perspective: 1000px;
+    margin-bottom: 70px;
+}
+.flip-card-inner {
+    position: relative;
+    width: 80%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 80%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    background-color: #bbb;
+    color: black;
+    z-index: 2;
+}
+
+.flip-card-back {
+    background-color: #2980b9;
+    color: white;
+    transform: rotateY(180deg);
+    z-index: 1;
+}
+.text-block {
+    border: 1px solid white;
+    padding: 30px;
+    width: 100%;
+    background-color:#bbb;
+}
+.footer{
+    background-color:#08387f;
+    margin-top:90px;
+    height:auto;
+}
+.footer p{
+    color:white;
+    font-size: 20px;
+}
