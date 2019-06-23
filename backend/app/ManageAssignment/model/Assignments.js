@@ -29,13 +29,13 @@ const assignmentSchema= mongoose.Schema({
         required:true
     },
 
-    Instructor:[
+    Instructor:
         {
-            type:mongoose.Schema.Types.ObjectId,
+            type:String,
             required:true,
-            ref:'Instructor'
+
         }
-    ],
+    ,
 
     assTopic:{
         type:String,

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from './Admin/course/courseViewCreate';
+import Home from './Admin/instructors/instractorViewCreate';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<Home />, document.getElementById('root'));

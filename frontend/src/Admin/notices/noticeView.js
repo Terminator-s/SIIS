@@ -2,11 +2,32 @@ import React, {Component} from 'react';
 import {Table, Card, Button} from "react-bootstrap";
 import ReactDOM from "react-dom";
 import EditNotices from "./noticeEdit";
+import axios from "../course/courseView";
 
 class ViewNotices extends Component{
     next = function(e){
         ReactDOM.render(<EditNotices />, document.getElementById('root'));
     };
+    constructor() {
+        super()
+        this.state = {
+            courses:[]
+
+        }
+    }
+
+    componentDidMount() {
+        axios.get('http://localhost:3001/courses').then(
+            data => {
+                this.setState({
+                    courses: data.data.message
+                });
+            }
+        ).catch(err=>{
+            console.log(err);
+
+        })
+    }
     render() {
         return(
             <div>

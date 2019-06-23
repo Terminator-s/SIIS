@@ -12,7 +12,7 @@ router.get('/:code', (req, res) => {
 
 router.get('/', (req, res) => {
     instructorController.getAll().then((instructors) => {
-        res.status(instructors.status).send({data:instructors.instructors})
+        res.status(instructors.status).send({message:instructors.instructors})
     }).catch(err => {
         res.status(err.status).send({message:err.message})
     })

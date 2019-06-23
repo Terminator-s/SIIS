@@ -2,12 +2,33 @@ import React, {Component} from 'react';
 import {Table, Card, Button} from "react-bootstrap";
 import ReactDOM from "react-dom";
 import EditInstructor from "./instractorEdit";
+import axios from 'axios';
 
 class ViewInstructor extends Component{
 
     next = function(e){
         ReactDOM.render(<EditInstructor />, document.getElementById('root'));
     };
+    constructor() {
+        super()
+        this.state = {
+            instructors:[]
+
+        }
+    }
+
+    componentDidMount() {
+        axios.get('http://localhost:3001/instructor').then(
+            data => {
+                this.setState({
+                    instructors: data.data.message
+                });
+            }
+        ).catch(err=>{
+            console.log(err);
+
+        })
+    }
     render() {
         return(
             <div>
@@ -30,18 +51,26 @@ class ViewInstructor extends Component{
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th>A001</th>
-                            <th>aaaa</th>
-                            <th>SE</th>
-                            <th>Rushda</th>
-                            <th>Rushda@123</th>
-                            <th>Rushda@gmail.com</th>
-                            <th>Colombo</th>
-                            <th>0771234567</th>
-                            <td><Button variant="success" onClick={e => this.next(e)}>Edit</Button></td>
-                            <td><Button variant="danger">Delete</Button></td>
-                        </tr>
+                        {
+                            this.state.instructors.map(cou => {
+                                return (
+                                    <tr key={cou._id}>
+                                        <td>{cou.code}</td>
+                                        <td>{cou.name}</td>
+                                        <td>{cou.username}</td>
+                                        <td>{cou.degree}</td>
+                                        <td>{cou.courses}</td>
+                                        <td>{cou.email}</td>
+                                        <td>{cou.address}</td>
+                                        <td>{cou.phone}</td>
+
+
+                                        <td><Button variant="success" onClick={e => this.next(e)}>Edit</Button></td>
+                                        <td><Button variant="danger">Delete</Button></td>
+                                    </tr>
+                                )
+                            })
+                        }
 
                         </tbody>
                     </Table>

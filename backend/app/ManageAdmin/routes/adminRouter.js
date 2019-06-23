@@ -10,9 +10,9 @@ router.get('/:code', (req, res) => {
     })
 });
 
-router.get('/getAll', (req, res) => {
+router.get('/', (req, res) => {
     adminController.getAll().then((admins) => {
-        res.status(admins.status).send(admins.admins)
+        res.status(admins.status).send({message:admins.admins})
     }).catch(err => {
         res.status(err.status).send({message:err.message})
     })

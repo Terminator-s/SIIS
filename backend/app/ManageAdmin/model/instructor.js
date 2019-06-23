@@ -19,18 +19,17 @@ const instructorSchema= mongoose.Schema({
         type: String,
         required:true
     },
-    degree:[
+    degree:
         {
-            type:mongoose.Schema.Types.ObjectId,
             required:true,
-            ref:'Degree'
+            type:String
+
         }
-    ],
+    ,
     courses:[
         {
-            type:mongoose.Schema.Types.ObjectId,
             required:true,
-            ref:'Course'
+            type:String
         }
     ],
     email: {

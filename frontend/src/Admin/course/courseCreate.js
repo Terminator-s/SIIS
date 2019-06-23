@@ -51,17 +51,7 @@ class CreateCourse extends Component{
         })
     }
 
-    componentDidMount(){
-        axios.get('http://localhost:3001/instructor').then(
-            data => {
-                console.log(data);
-                console.log(data.data.data);
-                this.setState({
-                    allInstructors: data.data.data
-                })
-            }
-        )
-    }
+
 
     render() {
         return (

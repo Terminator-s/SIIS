@@ -2,11 +2,32 @@ import React, {Component} from 'react';
 import {Table, Card, Button} from "react-bootstrap";
 import ReactDOM from "react-dom";
 import EditAdmin from "./adminEdit";
+import axios from 'axios';
 
 class ViewAdmin extends Component{
     next = function(e){
         ReactDOM.render(<EditAdmin />, document.getElementById('root'));
     };
+    constructor() {
+        super()
+        this.state = {
+            admins:[]
+
+        }
+    }
+
+    componentDidMount() {
+        axios.get('http://localhost:3001/admin').then(
+            data => {
+                this.setState({
+                    admins: data.data.message
+                });
+            }
+        ).catch(err=>{
+            console.log(err);
+
+        })
+    }
     render() {
         return(
             <div>
@@ -27,16 +48,25 @@ class ViewAdmin extends Component{
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th>A001</th>
-                            <th>Rushda</th>
-                            <th>Rushda@123</th>
-                            <th>Rushda@gmail.com</th>
-                            <th>Colombo</th>
-                            <th>0771234567</th>
-                            <td><Button variant="success" onClick={e => this.next(e)}>Edit</Button></td>
-                            <td><Button variant="danger">Delete</Button></td>
-                        </tr>
+                        {
+                            this.state.admins.map(cou => {
+                                return (
+                                    <tr key={cou._id}>
+                                        <td>{cou.code}</td>
+                                        <td>{cou.name}</td>
+                                        <td>{cou.username}</td>
+                                        <td>{cou.password}</td>
+                                        <td>{cou.email}</td>
+                                        <td>{cou.address}</td>
+                                        <td>{cou.phone}</td>
+
+
+                                        <td><Button variant="success" onClick={e => this.next(e)}>Edit</Button></td>
+                                        <td><Button variant="danger">Delete</Button></td>
+                                    </tr>
+                                )
+                            })
+                        }
 
                         </tbody>
                     </Table>
